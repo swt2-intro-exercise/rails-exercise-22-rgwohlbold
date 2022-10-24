@@ -1,3 +1,12 @@
+<% if @author.errors.any? %>
+  There were errors while creating the author:
+  <ul>
+  <% @author.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+  </ul>
+<% end  %>
+
 <%= form_with(model: @author, url: '/author', method: :post) do |form| %>
 <%= form.text_field :first_name %>
 <%= form.text_field :last_name %>

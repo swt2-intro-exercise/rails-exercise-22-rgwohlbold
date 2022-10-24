@@ -25,4 +25,14 @@ describe "New author page", type: :feature do
     author = Author.find_by(first_name: 'Alan', last_name: 'Turing', homepage: 'http://wikipedia.org/Alan_Turing')
     expect(author).not_to be_nil
   end
+
+  it "should show an error when trying to save an author without a last name" do
+    visit new_author_path
+
+    page.fill_in 'author[first_name]', with: 'Alan'
+    page.fill_in 'author[homepage]', with: 'http://wikipedia.org/Alan_Turing'
+    find('input[type="submit"]').click
+    # expect error in page
+    expect(page).to have_text("error")
+  end
 end
