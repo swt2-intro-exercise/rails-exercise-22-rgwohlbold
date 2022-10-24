@@ -3,7 +3,11 @@ class PapersController < ApplicationController
 
   # GET /papers
   def index
-    @papers = Paper.all
+    if params['year']
+      @papers = Paper.year(params['year'])
+    else
+      @papers = Paper.all
+    end
   end
 
   # GET /papers/1
@@ -53,6 +57,6 @@ class PapersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def paper_params
-      params.require(:paper).permit(:title, :venue, :year)
+      params.require(:paper).permit(:title, :venue, :year, author_ids: [])
     end
 end
