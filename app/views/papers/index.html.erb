@@ -8,6 +8,7 @@
     <p>
       <%= link_to "Show this paper", paper %>
       <%= link_to "Edit this paper", edit_paper_path(paper) %>
+      <%= link_to "Delete this paper", delete_paper_path(paper), method: :delete %>
     </p>
   <% end %>
 </div>
