@@ -1,0 +1,6 @@
+<%= form_with(model: @author, url: '/author', method: :post) do |form| %>
+<%= form.text_field :first_name %>
+<%= form.text_field :last_name %>
+<%= form.text_field :homepage %>
+<%= form.submit %>
+<% end %>
